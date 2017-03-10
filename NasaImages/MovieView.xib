@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieView" customModule="NasaImages" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="guc-YJ-vWU"/>
+                <outlet property="movieImageView" destination="Tep-EK-XTc" id="7K0-Qd-cRC"/>
+                <outlet property="movieLabel" destination="xIt-TF-yXS" id="NbU-Mv-6r7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="130" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Titanic" translatesAutoresizingMaskIntoConstraints="NO" id="Tep-EK-XTc">
+                    <rect key="frame" x="0.0" y="2" width="130" height="196"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Tep-EK-XTc" secondAttribute="height" multiplier="300:450" id="2jM-og-7Wg"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titanic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIt-TF-yXS">
+                    <rect key="frame" x="0.0" y="166" width="130" height="34"/>
+                    <color key="backgroundColor" red="0.36783456052503993" green="0.40511087593198791" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="xIt-TF-yXS" secondAttribute="bottom" id="3Zv-hJ-E4a"/>
+                <constraint firstItem="Tep-EK-XTc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KvE-h2-VxG"/>
+                <constraint firstItem="xIt-TF-yXS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LX0-Tb-WEe"/>
+                <constraint firstAttribute="trailing" secondItem="xIt-TF-yXS" secondAttribute="trailing" id="Qri-cH-vIh"/>
+                <constraint firstItem="Tep-EK-XTc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="SGh-tt-2RK"/>
+                <constraint firstItem="Tep-EK-XTc" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="VaS-4i-qwP"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-85.5" y="279.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Titanic" width="300" height="447"/>
+    </resources>
+</document>
