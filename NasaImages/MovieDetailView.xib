@@ -36,7 +36,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="0qK-eh-agQ">
                             <rect key="frame" x="0.0" y="0.0" width="84" height="24"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMDbIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lhU-EG-Szt">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMDbIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lhU-EG-Szt">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="lhU-EG-Szt" secondAttribute="height" multiplier="2100:1009" id="2sV-0Y-tKP"/>
