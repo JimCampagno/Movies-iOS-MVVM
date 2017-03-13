@@ -20,6 +20,14 @@ class MovieSearchCViewController: UICollectionViewController {
     var isSearching = false
     var originalContentOffset: CGPoint!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let imageView = UIImageView(frame: view.bounds)
+        imageView.image = #imageLiteral(resourceName: "MovieBackground")
+        collectionView?.backgroundView = imageView
+       // view.insertSubview(imageView, at: 0)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         originalContentOffset = collectionView!.contentOffset
@@ -67,6 +75,10 @@ extension MovieSearchCViewController: MovieViewDelegate {
         }
         
         return visibleMovies.contains(movie.imdbID)
+    }
+    
+    func movieView(_ movieView: MovieView, showDetailForMovie movie: Movie) {
+        print(movie.title)
     }
     
 }

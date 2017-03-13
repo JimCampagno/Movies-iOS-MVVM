@@ -11,6 +11,7 @@ import UIKit
 
 protocol MovieViewDelegate: class {
     func movieView(_ movieView: MovieView, canDisplayMovie movie: Movie) -> Bool
+    func movieView(_ movieView: MovieView, showDetailForMovie movie: Movie)
 }
 
 final class MovieView: UIView {
@@ -45,6 +46,16 @@ final class MovieView: UIView {
         clearPriorFilm()
         // TODO: Handle when there is no poster image, display title.
         movieLabel.isHidden = true
+        setupTapGesture()
+    }
+    
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(detailForMovie))
+        addGestureRecognizer(tapGesture)
+    }
+    
+    func detailForMovie() {
+        delegate?.movieView(self, showDetailForMovie: movie)
     }
 }
 
@@ -56,11 +67,14 @@ extension MovieView {
         
         if movie.image != nil {
             movieImageView.image = movie.image!
+            if movie.hasNoPoster {
+                movieLabel.isHidden = false
+            }
             return
         }
         
         if !movie.isDownloading {
-            movie.downloadImage(handler: { success in
+            movie.downloadImage(handler: { success in                
                 if success {
                     let canDisplayImage = self.delegate?.movieView(self, canDisplayMovie: self.movie) ?? false
                     if canDisplayImage {
@@ -68,17 +82,20 @@ extension MovieView {
                         self.movieImageView.image = self.movie.image
                         UIView.animate(withDuration: 1.5, animations: {
                             self.movieImageView.alpha = 1.0
+                            if self.movie.hasNoPoster {
+                                self.movieLabel.isHidden = false
+                            }
                         })
                     }
                 }
             })
         }
-        
     }
-    
+
     func clearPriorFilm() {
         movieImageView.image = nil
         movieLabel.text = nil
+        movieLabel.isHidden = true
     }
     
 }

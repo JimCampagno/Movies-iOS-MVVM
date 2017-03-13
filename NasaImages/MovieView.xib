@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,22 +29,22 @@
                         <constraint firstAttribute="width" secondItem="Tep-EK-XTc" secondAttribute="height" multiplier="300:450" id="2jM-og-7Wg"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titanic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIt-TF-yXS">
-                    <rect key="frame" x="0.0" y="166" width="130" height="34"/>
-                    <color key="backgroundColor" red="0.36783456052503993" green="0.40511087593198791" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titanic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xIt-TF-yXS">
+                    <rect key="frame" x="6.5" y="0.0" width="117" height="200"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="xIt-TF-yXS" secondAttribute="bottom" id="3Zv-hJ-E4a"/>
+                <constraint firstItem="xIt-TF-yXS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3Uw-Cm-4Tq"/>
                 <constraint firstItem="Tep-EK-XTc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KvE-h2-VxG"/>
-                <constraint firstItem="xIt-TF-yXS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LX0-Tb-WEe"/>
-                <constraint firstAttribute="trailing" secondItem="xIt-TF-yXS" secondAttribute="trailing" id="Qri-cH-vIh"/>
+                <constraint firstItem="xIt-TF-yXS" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="ROE-BH-QxX"/>
+                <constraint firstItem="xIt-TF-yXS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Rd7-ja-3Hh"/>
                 <constraint firstItem="Tep-EK-XTc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="SGh-tt-2RK"/>
                 <constraint firstItem="Tep-EK-XTc" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="VaS-4i-qwP"/>
+                <constraint firstItem="xIt-TF-yXS" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="haW-7u-06x"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
