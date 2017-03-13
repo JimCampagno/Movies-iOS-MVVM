@@ -44,7 +44,6 @@ final class MovieView: UIView {
         addSubview(contentView)
         contentView.constrainEdges(to: self)
         clearPriorFilm()
-        // TODO: Handle when there is no poster image, display title.
         movieLabel.isHidden = true
         setupTapGesture()
     }

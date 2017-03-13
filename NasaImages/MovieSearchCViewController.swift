@@ -78,6 +78,7 @@ extension MovieSearchCViewController: MovieViewDelegate {
     }
     
     func movieView(_ movieView: MovieView, showDetailForMovie movie: Movie) {
+        
         print(movie.title)
     }
     
