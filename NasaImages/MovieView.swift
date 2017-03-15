@@ -63,7 +63,7 @@ extension MovieView {
     
     func setupMovie() {
         movieLabel.text = movie.title
-        
+                
         if movie.image != nil {
             movieImageView.image = movie.image!
             if movie.hasNoPoster {
