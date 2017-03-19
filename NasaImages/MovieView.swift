@@ -9,28 +9,22 @@
 import Foundation
 import UIKit
 
-protocol MovieViewDelegate: class {
-    func movieView(_ movieView: MovieView, canDisplayMovie movie: Movie) -> Bool
-    func movieView(_ movieView: MovieView, showDetailForMovie movie: Movie)
-}
 
 final class MovieView: UIView {
-  
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieLabel: UILabel!
-    weak var delegate: MovieViewDelegate?
+    let duration: TimeInterval = 1.5
+    lazy var movieViewModel: MovieViewModel = { [unowned self] in
+        MovieViewModel(movieUpdated: self.moviedUpdated)
+        }()
     
-    
-    var movie: Movie! {
-        didSet {
-            setupMovie()
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,14 +32,18 @@ final class MovieView: UIView {
         commonInit()
     }
     
-    private func commonInit() {
+}
+
+// MARK: - Setup Methods
+extension MovieView {
+    
+    fileprivate func commonInit() {
         Bundle.main.loadNibNamed("MovieView", owner: self, options: nil)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentView)
         contentView.constrainEdges(to: self)
-        clearPriorFilm()
-        movieLabel.isHidden = true
         setupTapGesture()
+        clearPriorFilm()
     }
     
     private func setupTapGesture() {
@@ -53,44 +51,51 @@ final class MovieView: UIView {
         addGestureRecognizer(tapGesture)
     }
     
-    func detailForMovie() {
-        delegate?.movieView(self, showDetailForMovie: movie)
-    }
 }
 
 //MARK: - Movie Methods
 extension MovieView {
     
-    func setupMovie() {
-        movieLabel.text = movie.title
-                
-        if movie.image != nil {
-            movieImageView.image = movie.image!
-            if movie.hasNoPoster {
-                movieLabel.isHidden = false
-            }
-            return
-        }
+    func moviedUpdated(_ response: ImageResponse?) {
+        movieLabel.text = movieViewModel.titleForLabel
         
-        if !movie.isDownloading {
-            movie.downloadImage(handler: { success in                
-                if success {
-                    let canDisplayImage = self.delegate?.movieView(self, canDisplayMovie: self.movie) ?? false
-                    if canDisplayImage {
-                        self.movieImageView.alpha = 0.0
-                        self.movieImageView.image = self.movie.image
-                        UIView.animate(withDuration: 1.5, animations: {
-                            self.movieImageView.alpha = 1.0
-                            if self.movie.hasNoPoster {
-                                self.movieLabel.isHidden = false
-                            }
-                        })
-                    }
-                }
+        guard let response = response else { return }
+        
+        switch response {
+        case let .hasImage(image, shouldHideMovieLabel):
+            self.displayMovie(image: image, shouldHideLabel: shouldHideMovieLabel)
+            
+        case let .imageDownloadComplete(image, shouldHideLabel, canDisplayImage):
+            guard canDisplayImage else { return }
+            self.displayMovie(image: image, shouldHideLabel: shouldHideLabel, animate: true)
+        }
+    }
+    
+    private func displayMovie(image: UIImage, shouldHideLabel: Bool, animate: Bool = false) {
+        switch animate {
+        case false:
+            self.movieImageView.image = image
+            self.movieLabel.isHidden = shouldHideLabel
+            
+        case true:
+            self.movieImageView.alpha = 0
+            self.movieImageView.image = image
+            UIView.animate(withDuration: self.duration, animations: {
+                self.movieImageView.alpha = 1.0
+                self.movieLabel.isHidden = shouldHideLabel
             })
         }
     }
+    
+    func detailForMovie() {
+        movieViewModel.showMovieDetail()
+    }
+    
+}
 
+// MARK: - ReUse Methods
+extension MovieView {
+    
     func clearPriorFilm() {
         movieImageView.image = nil
         movieLabel.text = nil
@@ -100,15 +105,4 @@ extension MovieView {
 }
 
 
-//MARK: - Constraint Methods
-extension UIView {
-    
-    func constrainEdges(to view: UIView) {
-        leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-    }
-    
-}
 

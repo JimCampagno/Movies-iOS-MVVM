@@ -25,7 +25,7 @@ class MovieSearchCViewController: UICollectionViewController {
         let imageView = UIImageView(frame: view.bounds)
         imageView.image = #imageLiteral(resourceName: "MovieBackground")
         collectionView?.backgroundView = imageView
-       // view.insertSubview(imageView, at: 0)
+        // view.insertSubview(imageView, at: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +50,7 @@ extension MovieSearchCViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MovieCollectionViewCell
-        if cell.movieView.delegate == nil { cell.movieView.delegate = self }
+        if cell.hasNotSetupDelegate { cell.movieView.movieViewModel.delegate = self }
         return cell
     }
     
@@ -62,9 +62,9 @@ extension MovieSearchCViewController {
 }
 
 // MARK: - MovieView Delegate
-extension MovieSearchCViewController: MovieViewDelegate {
+extension MovieSearchCViewController: MovieViewModelDelegate {
     
-    func movieView(_ movieView: MovieView, canDisplayMovie movie: Movie) -> Bool {
+    func movieViewModel(_ movieViewModel: MovieViewModel, canDisplayMovie movie: Movie) -> Bool {
         var visibleMovies: Set<String> = []
         
         let visibleIndexPaths = collectionView?.indexPathsForVisibleItems ?? []
@@ -77,7 +77,7 @@ extension MovieSearchCViewController: MovieViewDelegate {
         return visibleMovies.contains(movie.imdbID)
     }
     
-    func movieView(_ movieView: MovieView, showDetailForMovie movie: Movie) {
+    func movieViewModel(_ movieViewModel: MovieViewModel, showDetailForMovie movie: Movie) {
         
         print(movie.title)
     }

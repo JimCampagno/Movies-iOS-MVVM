@@ -11,10 +11,13 @@ import UIKit
 class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var movieView: MovieView!
-    var movie: Movie! {
+    weak var movie: Movie! {
         didSet {
-            movieView.movie = movie
+            movieView.movieViewModel.movie = movie
         }
+    }
+    var hasNotSetupDelegate: Bool {
+        return movieView.movieViewModel.delegate == nil
     }
     
     override func prepareForReuse() {

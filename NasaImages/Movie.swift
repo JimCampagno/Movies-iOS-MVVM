@@ -18,6 +18,9 @@ final class Movie {
     var image: UIImage?
     var isDownloading = false
     var hasNoPoster = false
+    var hasImage: Bool {
+        return image != nil
+    }
     
     init(dictionary: [String : String]) {
         title = dictionary["Title"] ?? "No Title"
