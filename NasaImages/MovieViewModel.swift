@@ -42,19 +42,27 @@ final class MovieViewModel {
 extension MovieViewModel {
     
     func setupMovie() {
-        if movie.hasImage {
-            movieUpdated(ImageResponse.hasImage(image: movie.image!, shouldHideLabel: !movie.hasNoPoster))
-            return
-        }
-        
-        guard !movie.isDownloading else { movieUpdated(nil); return }
+        guard !movie.hasImage else { movieAlreadyHasImage(); return }
+        guard !movie.isDownloading else { movieIsDownloadingImage(); return }
         
         movie.downloadImage(handler: { success in
             guard success else { self.movieUpdated(nil); return }
-            let canDisplayImage = self.delegate?.movieViewModel(self, canDisplayMovie: self.movie) ?? false
-            let response = ImageResponse.imageDownloadComplete(image: self.movie.image!, shouldHideLabel: !self.movie.hasNoPoster, canDisplayImage: canDisplayImage)
-            self.movieUpdated(response)
+            self.movieHasFinishedDownloadingImage()
         })
+    }
+    
+    private func movieAlreadyHasImage() {
+        movieUpdated(ImageResponse.hasImage(image: movie.image!, shouldHideLabel: !movie.hasNoPoster))
+    }
+    
+    private func movieHasFinishedDownloadingImage() {
+        let canDisplayImage = self.delegate?.movieViewModel(self, canDisplayMovie: self.movie) ?? false
+        let response = ImageResponse.imageDownloadComplete(image: self.movie.image!, shouldHideLabel: !self.movie.hasNoPoster, canDisplayImage: canDisplayImage)
+        self.movieUpdated(response)
+    }
+    
+    private func movieIsDownloadingImage() {
+        movieUpdated(nil)
     }
     
 }
