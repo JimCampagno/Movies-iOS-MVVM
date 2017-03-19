@@ -28,6 +28,10 @@ final class MovieViewModel {
         }
     }
     
+    var canDisplayImage: Bool {
+        return delegate?.movieViewModel(self, canDisplayMovie: self.movie) ?? false
+    }
+    
     var titleForLabel: String {
         return movie.title
     }
@@ -38,14 +42,17 @@ final class MovieViewModel {
     
 }
 
-// MARK: - Image Downloads
+// MARK: - Movie Methods
 extension MovieViewModel {
     
     func setupMovie() {
         guard !movie.hasImage else { movieAlreadyHasImage(); return }
         guard !movie.isDownloading else { movieIsDownloadingImage(); return }
-        
-        movie.downloadImage(handler: { success in
+        downloadMovieImage()
+    }
+    
+    private func downloadMovieImage() {
+        movie.downloadImage(handler: { [unowned self] success in
             guard success else { self.movieUpdated(nil); return }
             self.movieHasFinishedDownloadingImage()
         })
@@ -56,9 +63,8 @@ extension MovieViewModel {
     }
     
     private func movieHasFinishedDownloadingImage() {
-        let canDisplayImage = self.delegate?.movieViewModel(self, canDisplayMovie: self.movie) ?? false
-        let response = ImageResponse.imageDownloadComplete(image: self.movie.image!, shouldHideLabel: !self.movie.hasNoPoster, canDisplayImage: canDisplayImage)
-        self.movieUpdated(response)
+        let response = ImageResponse.imageDownloadComplete(image: movie.image!, shouldHideLabel: !movie.hasNoPoster, canDisplayImage: canDisplayImage)
+        movieUpdated(response)
     }
     
     private func movieIsDownloadingImage() {
