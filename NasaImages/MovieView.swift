@@ -16,6 +16,7 @@ final class MovieView: UIView {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieLabel: UILabel!
     let duration: TimeInterval = 1.5
+    
     lazy var movieViewModel: MovieViewModel = { [unowned self] in
         MovieViewModel(movieUpdated: self.moviedUpdated)
         }()

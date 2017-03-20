@@ -78,7 +78,6 @@ extension MovieSearchCViewController: MovieViewModelDelegate {
     }
     
     func movieViewModel(_ movieViewModel: MovieViewModel, showDetailForMovie movie: Movie) {
-        
         print(movie.title)
     }
     
