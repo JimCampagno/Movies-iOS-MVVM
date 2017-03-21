@@ -50,7 +50,7 @@ extension MovieSearchCViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MovieCollectionViewCell
-        if cell.hasNotSetupDelegate { cell.movieView.movieViewModel.delegate = self }
+        if cell.hasNotSetupDelegate { cell.delegate = self }
         return cell
     }
     
@@ -78,7 +78,17 @@ extension MovieSearchCViewController: MovieViewModelDelegate {
     }
     
     func movieViewModel(_ movieViewModel: MovieViewModel, showDetailForMovie movie: Movie) {
+        
         print(movie.title)
+        
+        
+        performSegue(withIdentifier: "MovieDetail", sender: movie)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! MovieDetailViewController
+        destVC.movie = sender as! Movie
     }
     
 }

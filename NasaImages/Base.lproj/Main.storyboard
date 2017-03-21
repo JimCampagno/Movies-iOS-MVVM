@@ -65,11 +65,30 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchTextField" destination="Nd1-Vv-sRl" id="XrI-xx-9jj"/>
+                        <segue destination="L5u-nV-wim" kind="presentation" identifier="MovieDetail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Wdf-EP-J99"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2G-XM-0dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="708" y="128.18590704647679"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="Rco-Oo-H4z">
+            <objects>
+                <viewController id="L5u-nV-wim" customClass="MovieDetailViewController" customModule="NasaImages" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mj3-Ni-FK9"/>
+                        <viewControllerLayoutGuide type="bottom" id="2bQ-lN-PMA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zUz-6v-1Ix">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.27473859649666776" blue="0.98585423032572606" alpha="0.72316459760273977" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sdA-GO-P4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1518" y="128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GFC-61-wOo">

@@ -16,8 +16,19 @@ class MovieCollectionViewCell: UICollectionViewCell {
             movieView.movieViewModel.movie = movie
         }
     }
+    
+    var delegate: MovieViewModelDelegate? {
+        get {
+            return movieView.movieViewModel.delegate
+        }
+        
+        set {
+            movieView.movieViewModel.delegate = newValue
+        }
+    }
+    
     var hasNotSetupDelegate: Bool {
-        return movieView.movieViewModel.delegate == nil
+        return delegate == nil
     }
     
     override func prepareForReuse() {
