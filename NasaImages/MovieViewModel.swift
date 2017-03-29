@@ -18,7 +18,7 @@ protocol MovieViewModelDelegate: class {
 }
 
 final class MovieViewModel {
-    
+        
     let movieUpdated: MovieUpdatedClosure
     weak var delegate: MovieViewModelDelegate?
     

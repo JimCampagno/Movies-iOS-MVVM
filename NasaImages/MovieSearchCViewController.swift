@@ -19,6 +19,7 @@ class MovieSearchCViewController: UICollectionViewController {
     var movies: [Movie] = []
     var isSearching = false
     var originalContentOffset: CGPoint!
+    var movieSearchViewModel: MovieSearchVCViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +83,7 @@ extension MovieSearchCViewController: MovieViewModelDelegate {
         print(movie.title)
         
         
-        performSegue(withIdentifier: "MovieDetail", sender: movie)
+       // performSegue(withIdentifier: "MovieDetail", sender: movie)
         
     }
     

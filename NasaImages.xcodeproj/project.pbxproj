@@ -15,6 +15,7 @@
 		7D282CAB1E70526F004E6CC1 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D282CAA1E70526F004E6CC1 /* Request.swift */; };
 		7D282CAD1E705322004E6CC1 /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D282CAC1E705322004E6CC1 /* SearchQuery.swift */; };
 		7D282CAF1E705A56004E6CC1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D282CAE1E705A56004E6CC1 /* Response.swift */; };
+		7D2A34251E840C250072BEC9 /* MovieSearchVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2A34241E840C250072BEC9 /* MovieSearchVCViewModel.swift */; };
 		7DA46FF31E725EB40061EBF1 /* MovieSearchCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA46FF21E725EB40061EBF1 /* MovieSearchCViewController.swift */; };
 		7DA46FF51E72640D0061EBF1 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA46FF41E72640D0061EBF1 /* MovieCollectionViewCell.swift */; };
 		7DBEAD7B1E70BB670044181D /* MovieDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBEAD7A1E70BB670044181D /* MovieDataStore.swift */; };
@@ -38,6 +39,7 @@
 		7D282CAA1E70526F004E6CC1 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		7D282CAC1E705322004E6CC1 /* SearchQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
 		7D282CAE1E705A56004E6CC1 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		7D2A34241E840C250072BEC9 /* MovieSearchVCViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSearchVCViewModel.swift; sourceTree = "<group>"; };
 		7DA46FF21E725EB40061EBF1 /* MovieSearchCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSearchCViewController.swift; sourceTree = "<group>"; };
 		7DA46FF41E72640D0061EBF1 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		7DBEAD7A1E70BB670044181D /* MovieDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDataStore.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				7D1F08141E7EED18002762B2 /* MovieViewModel.swift */,
+				7D2A34241E840C250072BEC9 /* MovieSearchVCViewModel.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				7D1F08181E7F4020002762B2 /* ImageResponse.swift in Sources */,
 				7D1F08201E805AA4002762B2 /* MovieDetailViewController.swift in Sources */,
+				7D2A34251E840C250072BEC9 /* MovieSearchVCViewModel.swift in Sources */,
 				7DCFC6E41E706102002316FF /* Movie.swift in Sources */,
 				7D282CAD1E705322004E6CC1 /* SearchQuery.swift in Sources */,
 				7D282CAB1E70526F004E6CC1 /* Request.swift in Sources */,
